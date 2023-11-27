@@ -62,14 +62,7 @@ def main():
     input_path = '../data/gec-only/train.src.tok'
     target_path = '../data/gec-only/train.tgt.tok'
 
-    dataset = construct_dataset(input_path, target_path, 856*2, 16)
-    print(dataset)
-
-    for (batch, (input_ids, target_ids)) in enumerate(dataset):
-
-        print(input_ids)
-        print(target_ids)
-        return
+    print(get_target_max_seq_len(input_path))
 
 
 if __name__ == '__main__':
