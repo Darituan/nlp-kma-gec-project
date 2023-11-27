@@ -1,13 +1,14 @@
 import tensorflow as tf
 from utils import feed_forward_network
+from transformer.multi_head_attention import MultiHeadAttention
 
 
 class DecoderLayer(tf.keras.layers.Layer):
     def __init__(self, d_model, num_heads, dff, rate=0.1, eps=1e-6):
         super(DecoderLayer, self).__init__()
 
-        self.mha1 = tf.keras.layers.MultiHeadAttention(d_model, num_heads)
-        self.mha2 = tf.keras.layers.MultiHeadAttention(d_model, num_heads)
+        self.mha1 = MultiHeadAttention(d_model, num_heads)
+        self.mha2 = MultiHeadAttention(d_model, num_heads)
 
         self.ffn = feed_forward_network(d_model, dff)
 
